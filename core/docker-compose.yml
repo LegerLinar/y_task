@@ -2,10 +2,29 @@ version: "3"
 
 services:
   task-database:
-    build: ..
+    build: ./
     container_name: besedin_task_database
     environment:
       POSTGRES_USER: besedinroot
       POSTGRES_PASSWORD: besedinrootroot
     ports:
       - "5442:5432"
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: 'rabbitmq'
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    environment:
+      RABBITMQ_DEFAULT_USER: besedin-user
+      RABBITMQ_DEFAULT_PASS: besedin-password
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+       - rabbitmq_network
+
+volumes:
+  rabbitmq_data:
+networks:
+  rabbitmq_network:
+    driver: bridge

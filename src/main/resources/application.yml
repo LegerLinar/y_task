@@ -9,6 +9,17 @@ spring:
         default_schema:
   rabbitmq:
     host: localhost
-    port:
-    username:
-    password:
+    port: 5672
+    username: user
+    password: password
+    virtual-host: /
+    listener:
+      simple:
+        concurrency: 3
+        max-concurrency: 10
+        retry:
+          enabled: true
+          initial-interval: 500
+          multiplier: 2.0
+          max-interval: 5000
+          max-attempts: 3
