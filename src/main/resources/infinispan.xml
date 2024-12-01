@@ -1,0 +1,11 @@
+<infinispan>
+    <cache-container name="pcb-container">
+        <local-cache name="pcbCache">
+            <memory max-count="1000"/>
+            <expiration lifespan="10m" max-idle="5m"/>
+        </local-cache>
+        <local-cache name="pcbHistoryCache">
+            <memory max-count="500"/>
+        </local-cache>
+    </cache-container>
+</infinispan>

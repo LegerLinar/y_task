@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  task-database:
+    build: ..
+    container_name: besedin_task_database
+    environment:
+      POSTGRES_USER: besedinroot
+      POSTGRES_PASSWORD: besedinrootroot
+    ports:
+      - "5442:5432"
